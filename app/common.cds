@@ -9,6 +9,7 @@ using riskmanagement as rm from '../db/schema';
  descr  @title : 'Description';
  miti   @title : 'Mitigation';
  impact @title : 'Impact';
+ bp     @title : 'Business Partner'
  } 
 
 // Annotate Miti elements
@@ -42,4 +43,27 @@ annotate rm.Risks with {
     ]
     }
   });
+  bp @(Common : {
+   Text : bp.LastName,
+   TextArrangement : #TextOnly,
+   ValueList : {
+      Label : 'Business Partners',
+      CollectionPath : 'BusinessPartners',
+      Parameters : [
+         {
+           $Type : 'Common.ValueListParameterInOut',
+           LocalDataProperty : bp_BusinessPartner,
+           ValueListProperty : 'BusinessPartner'
+         },
+         {
+            $Type : 'Common.ValueListParameterDisplayOnly',
+            ValueListProperty : 'LastName'
+          },
+          {
+             $Type : 'Common.ValueListParameterDisplayOnly',
+             ValueListProperty : 'FirstName'
+          }
+       ]
+     }
+  })
  }

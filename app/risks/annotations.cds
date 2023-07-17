@@ -28,25 +28,27 @@ using RiskService from '../../srv/risk-service';
           Value : impact,
           Criticality : criticality
        },
+       {Value : bp_BusinessPartner},
     ],
  });
  // Risk Object Page
  annotate RiskService.Risks with @(UI : {
-     Facets : [{
-        $Type : 'UI.ReferenceFacet',
-        Label : 'Main',
-        Target : '@UI.FieldGroup#Main',
-     }],
-     FieldGroup #Main : {Data : [
-       {Value : miti_ID},
-       {Value : owner},
-       {
-           Value : prio,
-           Criticality : criticality
-       },
-       { 
-           Value : impact,
-           Criticality : criticality
-       }
-    ]},
+   Facets : [{
+     $Type : 'UI.ReferenceFacet',
+     Label : 'Main',
+     Target : '@UI.FieldGroup#Main',
+   }],
+   FieldGroup #Main : {Data : [
+     {Value : miti_ID},
+     {Value : owner},
+     {Value : bp_BusinessPartner},
+     {
+       Value : prio,
+       Criticality : criticality
+     },
+     {
+       Value : impact,
+       Criticality : criticality
+     }
+   ]},
  });
